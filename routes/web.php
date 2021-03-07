@@ -20,3 +20,4 @@ Route::get('/', function () {
 use App\Http\Controllers\TestController;
 
 Route::get('/ola/{nome}', [TestController::class, 'index']);
+Route::get('/notas', [TestController::class, 'notas']);
