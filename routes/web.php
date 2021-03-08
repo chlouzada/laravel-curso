@@ -18,6 +18,8 @@ Route::get('/', function () {
 });
 
 use App\Http\Controllers\TestController;
+use App\Http\Controllers\PostsController;
 
 Route::get('/ola/{nome}', [TestController::class, 'index']);
 Route::get('/notas', [TestController::class, 'notas']);
+Route::get('/blog', [PostsController::class, 'index']);
