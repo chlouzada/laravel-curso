@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;    
 use App\Models\Post;
 use App\Models\Tag;
+use App\Models\User;
 use App\Http\Requests\PostRequest;
 
 class PostsAdminController extends Controller
@@ -15,6 +16,11 @@ class PostsAdminController extends Controller
     {
         $this->post = $post;
     }
+
+    
+
+
+
 
     public function index()
     {
