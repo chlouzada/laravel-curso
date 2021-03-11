@@ -24,4 +24,11 @@ class Post extends Model
         // return $this->belongsToMany('App\Models\Tag', 'posts_tags');
         return $this->belongsToMany(Tag::class, 'posts_tags');
     }
+
+    public function getTagListAtribute()
+    {
+        $tags = $this->tags()->lists('name')->all();
+
+        return implode(', ', $tags);
+    }
 }

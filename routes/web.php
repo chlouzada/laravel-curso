@@ -13,13 +13,29 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\PostsController;
+use App\Http\Controllers\PostsAdminController;
 
 Route::get('/ola/{nome}', [TestController::class, 'index']);
-Route::get('/notas', [TestController::class, 'notas']);
-Route::get('/blog', [PostsController::class, 'index']);
+// Route::get('/notas', [TestController::class, 'notas']);
+
+
+
+Route::get('/', [PostsController::class, 'index']);
+
+Route::prefix('admin')->group(function () {
+
+  Route::prefix('posts')->group(function () {
+    Route::get('', [PostsAdminController::class, 'index'])->name('admin.posts.index');
+    Route::get('/create', [PostsAdminController::class, 'create'])->name('admin.posts.create');
+    Route::post('/store', [PostsAdminController::class, 'store'])->name('admin.posts.store');
+    Route::get('/edit/{id}', [PostsAdminController::class, 'edit'])->name('admin.posts.edit');
+    Route::put('/update/{id}', [PostsAdminController::class, 'update'])->name('admin.posts.update');
+    Route::get('/destroy/{id}', [PostsAdminController::class, 'destroy'])->name('admin.posts.destroy'); 
+  });
+});
